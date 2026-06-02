@@ -1,4 +1,4 @@
-# Enhancer
+# ImageEnhancer
 
 A fully local, on-device AI image enhancement tool. Restore faces, upscale backgrounds, and sharpen details — no cloud, no API keys, no data leaves your machine.
 

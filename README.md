@@ -19,6 +19,16 @@ Runs on **macOS (Apple Silicon or Intel)** and **Linux** via PyTorch. Apple Sili
 
 ---
 
+Screenshots:
+
+<img width="1488" height="821" alt="image" src="https://github.com/user-attachments/assets/c3ecd5d4-b8dc-4c17-b306-b15c8d0ccc28" />
+
+
+
+
+
+---
+
 ## Architecture
 
 ```

@@ -4,7 +4,8 @@
 set -e
 
 WEIGHTS_DIR="weights"
-mkdir -p "$WEIGHTS_DIR"
+GFPGAN_DIR="gfpgan/weights"
+mkdir -p "$WEIGHTS_DIR" "$GFPGAN_DIR"
 
 # Helper: download if not already present
 download_if_missing() {
@@ -68,14 +69,13 @@ download_if_missing \
     "$WEIGHTS_DIR/codeformer.pth" \
     "https://github.com/sczhou/CodeFormer/releases/download/v0.1.0/codeformer.pth"
 
-# ── Detection model (facexlib / GFPGAN / CodeFormer) ─────────────────────────
+# ── Detection + Parsing models (facexlib — GFPGAN reads from gfpgan/weights/) ───────
 download_if_missing \
-    "$WEIGHTS_DIR/detection_Resnet50_Final.pth" \
+    "$GFPGAN_DIR/detection_Resnet50_Final.pth" \
     "https://github.com/xinntao/facexlib/releases/download/v0.1.0/detection_Resnet50_Final.pth"
 
-# ── Parsing model (facexlib / GFPGAN / CodeFormer) ───────────────────────────
 download_if_missing \
-    "$WEIGHTS_DIR/parsing_parsenet.pth" \
+    "$GFPGAN_DIR/parsing_parsenet.pth" \
     "https://github.com/xinntao/facexlib/releases/download/v0.2.2/parsing_parsenet.pth"
 
 # ── AnimeGANv3 ONNX models (Anime Style mode) ────────────────────────────────
@@ -88,5 +88,6 @@ download_if_missing \
     "https://github.com/TachibanaYoshino/AnimeGANv3/releases/download/v1.1.0/AnimeGANv3_Shinkai_37.onnx"
 
 echo ""
-echo "All weights downloaded to ./$WEIGHTS_DIR/"
-ls -lh "$WEIGHTS_DIR"
+echo "All weights downloaded."
+echo "  $WEIGHTS_DIR/  → $(ls $WEIGHTS_DIR | wc -l | tr -d ' ') files"
+echo "  $GFPGAN_DIR/   → $(ls $GFPGAN_DIR | wc -l | tr -d ' ') files"
